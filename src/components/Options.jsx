@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MealPlan from "./MealPlan"
-import recipeList from "../utils/recipeList"
+import recipeList from "../data/recipeList"
 
 const Options = (props) => {
     const [mealsRequired, setMealsRequired] = useState({
