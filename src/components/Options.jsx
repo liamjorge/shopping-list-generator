@@ -1,6 +1,7 @@
 import { useState } from "react";
 import MealPlan from "./MealPlan"
 import recipeList from "../data/recipeList"
+import shuffle from "../utils/shuffle"
 
 const Options = (props) => {
     const [mealsRequired, setMealsRequired] = useState({
@@ -21,9 +22,10 @@ const Options = (props) => {
 
     const generateRecipes = (event) => {
         const numberOfMeals = Object.values(mealsRequired).reduce((a, b) => a + b, 0)
-        for (let i=1; i<=numberOfMeals; i++) {
-            const randomNum = Math.floor(Math.random() * recipeList.length);
-            setChosenMeals(meals => ([ ...meals, recipeList[randomNum] ]))
+        const randomRecipeIndices = shuffle([...Array(recipeList.length).keys()])
+        
+        for (let i=0; i<numberOfMeals; i++) {
+            setChosenMeals(meals => ([ ...meals, recipeList[randomRecipeIndices[i]] ]))
         }
         setIsSubmitted(true)
     }
