@@ -1,5 +1,6 @@
 import React from "react";
 import ShoppingList from "./ShoppingList"
+import { Button, ListSubheader, List, ListItemButton, ListItemText, Icon }  from '@mui/material';
 
 const MealPlan = (props) => {
     const {mealsRequired, setIsSubmitted, setChosenMeals, chosenMeals} = props;
@@ -15,15 +16,31 @@ const MealPlan = (props) => {
 
     return (
     <section>
-        <h2>Meal plan</h2>
-        {chosenDays.map((day, index)=>(
-            <React.Fragment key={day + index}>
-                <h3 key={day+"h3"}>{day}</h3>
-                <p key={day+"p"}>{chosenMeals[index].type} {chosenMeals[index].recipeName}</p>
-            </React.Fragment>
-    ))}
-    <ShoppingList chosenMeals={chosenMeals}></ShoppingList>
-    <button onClick={goBack}>Go back</button>
+        <List 
+            sx={{ width: '100%', maxWidth: 360 }}
+            component="nav"
+            aria-labelledby="nested-list-subheader"
+            subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                Shopping list
+                </ListSubheader>
+            }
+            >
+            {chosenDays.map((day, index)=>(
+                <React.Fragment key={day + index}>
+                    <ListItemButton>
+                        <ListItemText primary={day} />
+                    </ListItemButton>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemText primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
+                        </ListItemButton>
+                    </List>
+                </React.Fragment>
+            ))}
+        </List>
+        <ShoppingList chosenMeals={chosenMeals}></ShoppingList>
+        <Button variant="contained" onClick={goBack} startIcon={<Icon>undo</Icon>}>Go back</Button>
     </section>
     )
 }

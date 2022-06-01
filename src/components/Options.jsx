@@ -2,6 +2,8 @@ import { useState } from "react";
 import MealPlan from "./MealPlan"
 import recipeList from "../data/recipeList"
 import shuffle from "../utils/shuffle"
+import { Button, Switch, Icon } from '@mui/material';
+
 
 const Options = (props) => {
     const [mealsRequired, setMealsRequired] = useState({
@@ -40,17 +42,10 @@ const Options = (props) => {
             {Object.keys(mealsRequired).map(day => (
                 <section key={day+"section"}>
                     <h3 key={day}>{day}</h3>
-                    <label htmlFor={day}>Dinner</label>
-                    <input
-                    type="checkbox"
-                    onChange={handleToggle}
-                    key={day+"checkbox"}
-                    name={day}
-                    checked={mealsRequired[day]}
-                    />
+                    <Switch name={day} onChange={handleToggle} checked={mealsRequired[day]}/>
                 </section>
             ))}
-            <button onClick={generateRecipes}>Let's go!</button>
+            <Button variant="contained" onClick={generateRecipes} startIcon={<Icon>star</Icon>}>Let's go</Button>
         </section>
     )
 }
