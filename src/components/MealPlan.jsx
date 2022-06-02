@@ -22,21 +22,14 @@ const MealPlan = (props) => {
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheader component="div" id="nested-list-subheader">
-                Shopping list
+                Meal plan
                 </ListSubheader>
             }
             >
             {chosenDays.map((day, index)=>(
-                <React.Fragment key={day + index}>
-                    <ListItemButton>
-                        <ListItemText primary={day} />
-                    </ListItemButton>
-                    <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }}>
-                            <ListItemText primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
-                        </ListItemButton>
-                    </List>
-                </React.Fragment>
+                <ListItemButton>
+                    <ListItemText primary={`${day}:  ${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
+                </ListItemButton>
             ))}
         </List>
         <ShoppingList chosenMeals={chosenMeals}></ShoppingList>

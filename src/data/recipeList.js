@@ -364,7 +364,7 @@ const recipeList = [
         item: "maris piper potatoes",
         amount: 1,
         units: "kg",
-        category: "fridge",
+        category: "fruit/veg",
       },
       {
         item: "lacto-free milk",

@@ -2,7 +2,7 @@ import { useState } from "react";
 import MealPlan from "./MealPlan"
 import recipeList from "../data/recipeList"
 import shuffle from "../utils/shuffle"
-import { Button, Switch, Icon } from '@mui/material';
+import { Button, Switch, Icon, Grid, Box } from '@mui/material';
 
 
 const Options = (props) => {
@@ -39,12 +39,14 @@ const Options = (props) => {
 
     return (
         <section>
+            <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ mb: "1rem" }}>
             {Object.keys(mealsRequired).map(day => (
-                <section key={day+"section"}>
-                    <h3 key={day}>{day}</h3>
+                <Box sx={{ m: "1rem" }}>
+                    <p key={day}>{day}</p>
                     <Switch name={day} onChange={handleToggle} checked={mealsRequired[day]}/>
-                </section>
+                </Box>
             ))}
+            </Grid>
             <Button variant="contained" onClick={generateRecipes} startIcon={<Icon>star</Icon>}>Let's go</Button>
         </section>
     )
