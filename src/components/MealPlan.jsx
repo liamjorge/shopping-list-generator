@@ -1,14 +1,13 @@
 import React from "react";
 import ShoppingList from "./ShoppingList"
-import { Button, ListSubheader, List, ListItemButton, ListItemText, Icon }  from '@mui/material';
+import EndButtons from "./EndButtons"
+import { ListSubheader, List, ListItemButton, ListItemText, Typography}  from '@mui/material';
 
 const MealPlan = (props) => {
     const {mealsRequired, setIsSubmitted, setChosenMeals, chosenMeals} = props;
 
-    const goBack = () => {
-        setIsSubmitted(false)
-        setChosenMeals([])
-    }
+    const [buttonText, setButtonText] = React.useState('Copy to clipboard');
+
 
     let chosenDays = Object.entries(mealsRequired)
         .filter(([day,value]) => value === true)
@@ -16,24 +15,38 @@ const MealPlan = (props) => {
 
     return (
     <section>
-        <List 
-            sx={{ width: '100%', maxWidth: 360 }}
+        <List
+            sx={{ width: '100%', maxWidth: 360, mb: 3 }}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
                 <ListSubheader component="div" id="nested-list-subheader">
-                Meal plan
+                    <Typography variant="h6">
+                        Meal plan
+                    </Typography>
                 </ListSubheader>
             }
             >
             {chosenDays.map((day, index)=>(
-                <ListItemButton>
-                    <ListItemText primary={`${day}:  ${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
-                </ListItemButton>
+                <React.Fragment key={day + index}>
+                    <ListItemButton sx={{cursor: 'default'}}>
+                        <ListItemText primary={
+                            <Typography variant="h6">
+                                {day}
+                            </Typography>
+                        } />
+                        
+                    </ListItemButton>
+                    <List component="div" disablePadding>
+                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}>
+                            <ListItemText primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
+                        </ListItemButton>
+                    </List>
+                </React.Fragment>
             ))}
         </List>
         <ShoppingList chosenMeals={chosenMeals}></ShoppingList>
-        <Button variant="contained" onClick={goBack} startIcon={<Icon>undo</Icon>}>Go back</Button>
+        <EndButtons setIsSubmitted={setIsSubmitted} setChosenMeals={setChosenMeals} chosenMeals={chosenMeals} chosenDays={chosenDays} buttonText={buttonText} setButtonText={setButtonText}></EndButtons>
     </section>
     )
 }

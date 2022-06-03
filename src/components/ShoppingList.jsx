@@ -1,6 +1,6 @@
 import { useState } from "react";
 import getGroupedIngredients from "../utils/getGroupedIngredients"
-import { ListSubheader, List, ListItemButton, ListItemText, Collapse, Icon }  from '@mui/material';
+import { ListSubheader, List, ListItemButton, ListItemText, Collapse, Icon, Typography }  from '@mui/material';
 
 const ShoppingList = (props) => {
     const {chosenMeals} = props;
@@ -34,7 +34,9 @@ const ShoppingList = (props) => {
                 aria-labelledby="nested-list-subheader"
                 subheader={
                     <ListSubheader component="div" id="nested-list-subheader">
-                    Shopping list
+                        <Typography variant="h6">
+                            Shopping list
+                        </Typography>
                     </ListSubheader>
                 }
                 >
@@ -46,7 +48,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openFruitVeg} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "fruit/veg").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4 }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>
@@ -58,7 +60,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openFridge} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "fridge").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4 }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>
@@ -70,7 +72,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openCupboard} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "cupboard").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4 }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>
@@ -82,7 +84,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openFreezer} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "freezer").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4 }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>

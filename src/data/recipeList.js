@@ -428,6 +428,45 @@ const recipeList = [
       },
     ],
   },
+  {
+    recipeName: "Fiery prawn spaghetti",
+    url: "https://www.bbc.co.uk/food/recipes/fiery_prawn_and_tomato_46263",
+    type: "🐠",
+    servings: 2,
+    ingredients: [
+      { item: "spaghetti", amount: 125, units: "g", category: "cupboard" },
+      {
+        item: "broccoli",
+        amount: 150,
+        units: "g",
+        category: "fruit/veg",
+      },
+      {
+        item: "cherry tomatoes",
+        amount: 100,
+        units: "g",
+        category: "fruit/veg",
+      },
+      {
+        item: "king prawns",
+        amount: 150,
+        units: "g",
+        category: "fridge",
+      },
+      {
+        item: "dried chilli flakes",
+        amount: 0.5,
+        units: "tsp",
+        category: "cupboard",
+      },
+      {
+        item: "lemon",
+        amount: 1,
+        units: "x",
+        category: "fruit/veg",
+      },
+    ],
+  },
 ];
 
 export default recipeList;
