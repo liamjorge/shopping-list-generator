@@ -18,7 +18,7 @@ const EndButtons = (props) => {
     + getGroupedIngredients(chosenMeals, "fridge").map((ingredient, index)=>( ingredient.amount + ingredient.units + ' ' + ingredient.item + '\n')).join("")
     + "\n 🥜 Cupboard \n"
     + getGroupedIngredients(chosenMeals, "cupboard").map((ingredient, index)=>( ingredient.amount + ingredient.units + ' ' + ingredient.item + '\n')).join("")
-    + "\n 🥜 Freezer \n"
+    + "\n 🥶 Freezer \n"
     + getGroupedIngredients(chosenMeals, "freezer").map((ingredient, index)=>( ingredient.amount + ingredient.units + ' ' + ingredient.item + '\n')).join("")
 
     const copyToClipboard = () => {
