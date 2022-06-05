@@ -48,7 +48,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openFruitVeg} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "fruit/veg").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton key={"fruit/veg"+index} sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>
@@ -60,7 +60,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openFridge} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "fridge").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton key={"fridge"+index} sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>
@@ -72,7 +72,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openCupboard} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "cupboard").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton key={"cupboard"+index} sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>
@@ -84,7 +84,7 @@ const ShoppingList = (props) => {
                 <Collapse in={openFreezer} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         {getGroupedIngredients(chosenMeals, "freezer").map((ingredient, index)=>(
-                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
+                        <ListItemButton key={"freezer"+index} sx={{ pl: 4, cursor: 'default' }}><ListItemText primary={`${ingredient.amount}${ingredient.units} ${ingredient.item}`} /></ListItemButton>
                         ))}
                     </List>
                 </Collapse>

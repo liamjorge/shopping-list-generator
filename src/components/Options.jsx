@@ -41,9 +41,9 @@ const Options = (props) => {
         <section>
             <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ mb: "1rem" }}>
             {Object.keys(mealsRequired).map(day => (
-                <Box sx={{ m: "1rem" }}>
-                    <p key={day}>{day}</p>
-                    <Switch name={day} onChange={handleToggle} checked={mealsRequired[day]}/>
+                <Box key={day+"box"} sx={{ m: "1rem" }}>
+                    <p key={day+"p"}>{day}</p>
+                    <Switch key={day+"switch"} name={day} onChange={handleToggle} checked={mealsRequired[day]}/>
                 </Box>
             ))}
             </Grid>

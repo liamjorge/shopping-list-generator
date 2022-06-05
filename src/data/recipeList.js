@@ -467,6 +467,64 @@ const recipeList = [
       },
     ],
   },
+  {
+    recipeName: "Thick smoked haddock chowder",
+    url: "https://www.bbc.co.uk/food/recipes/thick_smoked-haddock_90997",
+    type: "🐠",
+    servings: 4,
+    ingredients: [
+      { item: "lacto-free butter", amount: 25, units: "g", category: "fridge" },
+      { item: "onion", amount: 1, units: "x", category: "fruit/veg" },
+      {
+        item: "plain flour",
+        amount: 20,
+        units: "g",
+        category: "cupboard",
+      },
+      {
+        item: "lacto-free milk",
+        amount: 400,
+        units: "ml",
+        category: "fridge",
+      },
+      {
+        item: "medium potatoes",
+        amount: 2,
+        units: "x",
+        category: "fruit/veg",
+      },
+      {
+        item: "frozen sweetcorn",
+        amount: 100,
+        units: "g",
+        category: "freezer",
+      },
+      {
+        item: "leek",
+        amount: 1,
+        units: "x",
+        category: "fruit/veg",
+      },
+      {
+        item: "smoked haddock fillets",
+        amount: 4,
+        units: "x",
+        category: "fridge",
+      },
+      {
+        item: "eggs",
+        amount: 4,
+        units: "x",
+        category: "cupboard",
+      },
+      {
+        item: "parsley",
+        amount: 1,
+        units: "x bunch",
+        category: "fruit/veg",
+      },
+    ],
+  },
 ];
 
 export default recipeList;

@@ -38,8 +38,8 @@ const MealPlan = (props) => {
                         
                     </ListItemButton>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4, cursor: 'default' }}>
-                            <ListItemText primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
+                        <ListItemButton sx={{ pl: 4 }} component="a" href={chosenMeals[index].url} target="_blank">
+                            <ListItemText primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName} (serves ${chosenMeals[index].servings})`} />
                         </ListItemButton>
                     </List>
                 </React.Fragment>

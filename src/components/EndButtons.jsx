@@ -10,7 +10,7 @@ const EndButtons = (props) => {
     }
 
     const mealPlanText = "Meal plan \n\n "
-    + chosenDays.map((day, index)=>( day + '\n' + chosenMeals[index].type + ' ' + chosenMeals[index].recipeName + '\n\n')).join("")
+    + chosenDays.map((day, index)=>( day + '\n' + chosenMeals[index].type + ' ' + chosenMeals[index].recipeName + ' (' + chosenMeals[index].url + ')\n\n')).join("")
     + " \n Shopping list \n\n"
     + "🥕 Fruit & veg \n"
     + getGroupedIngredients(chosenMeals, "fruit/veg").map((ingredient, index)=>( ingredient.amount + ingredient.units + ' ' + ingredient.item + '\n')).join("")
