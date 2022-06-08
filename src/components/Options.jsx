@@ -17,6 +17,7 @@ const Options = (props) => {
     })
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [chosenMeals, setChosenMeals] = useState([]);
+    const [servings, setServings ] = useState([])
    
     const handleToggle = ({ target }) => {
         setMealsRequired(s => ({ ...s, [target.name]: !s[target.name] }));
@@ -28,12 +29,13 @@ const Options = (props) => {
         
         for (let i=0; i<numberOfMeals; i++) {
             setChosenMeals(meals => ([ ...meals, recipeList[randomRecipeIndices[i]] ]))
+            setServings(servings => ([...servings, recipeList[randomRecipeIndices[i]].servings ]))
         }
         setIsSubmitted(true)
     }
 
     if (isSubmitted) {
-        return <MealPlan mealsRequired={mealsRequired} setIsSubmitted={setIsSubmitted} setChosenMeals={setChosenMeals} chosenMeals={chosenMeals}/>
+        return <MealPlan mealsRequired={mealsRequired} setIsSubmitted={setIsSubmitted} setChosenMeals={setChosenMeals} chosenMeals={chosenMeals} servings={servings} setServings={setServings}/>
     }
 
 

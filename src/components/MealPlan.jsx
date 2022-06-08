@@ -1,13 +1,26 @@
 import React from "react";
 import ShoppingList from "./ShoppingList"
 import EndButtons from "./EndButtons"
-import { ListSubheader, List, ListItemButton, ListItemText, Typography}  from '@mui/material';
+import { Button, ButtonGroup, ListSubheader, List, ListItemButton, ListItemText, Typography}  from '@mui/material';
 
 const MealPlan = (props) => {
-    const {mealsRequired, setIsSubmitted, setChosenMeals, chosenMeals} = props;
+    const {mealsRequired, setIsSubmitted, setChosenMeals, chosenMeals, servings, setServings} = props;
 
     const [buttonText, setButtonText] = React.useState('Copy to clipboard');
 
+    const increaseServings = (idx) => {
+        const newChosenMeals = [...chosenMeals]
+        newChosenMeals[idx].servings=chosenMeals[idx].servings + 1;
+        newChosenMeals[idx].ingredients.map((ingredient) => ingredient.amount = Math.round(((ingredient.amount * newChosenMeals[idx].servings)/(newChosenMeals[idx].servings-1))*100)/100)
+        setChosenMeals(newChosenMeals)
+    }
+
+    const decreaseServings = (idx) => {
+        const newChosenMeals = [...chosenMeals]
+        newChosenMeals[idx].servings=Math.max(chosenMeals[idx].servings - 1,1);
+        newChosenMeals[idx].ingredients.map((ingredient) => ingredient.amount = Math.round(((ingredient.amount * newChosenMeals[idx].servings)/(newChosenMeals[idx].servings+1))*100)/100)
+        setChosenMeals(newChosenMeals)
+    }
 
     let chosenDays = Object.entries(mealsRequired)
         .filter(([day,value]) => value === true)
@@ -38,10 +51,16 @@ const MealPlan = (props) => {
                         
                     </ListItemButton>
                     <List component="div" disablePadding>
-                        <ListItemButton sx={{ pl: 4 }} component="a" href={chosenMeals[index].url} target="_blank">
-                            <ListItemText primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName} (serves ${chosenMeals[index].servings})`} />
+                        <ListItemButton sx={{ pl: 4 }}>
+                            <ListItemText component="a" href={chosenMeals[index].url} target="_blank" primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
+                            <ButtonGroup size="small">
+                                <Button onClick={() => decreaseServings(index)}>-</Button>
+                                <Button disabled>{chosenMeals[index].servings}</Button>
+                                <Button onClick={() => increaseServings(index)}>+</Button>
+                            </ButtonGroup>
                         </ListItemButton>
                     </List>
+                    
                 </React.Fragment>
             ))}
         </List>
