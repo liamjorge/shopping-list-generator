@@ -626,7 +626,7 @@ const recipeList = [
   },
   {
     recipeName: "Kung pao beef",
-    url: "https://www.bbcgoodfood.com/recipes/burnt-aubergine-veggie-chilli",
+    url: "https://realfood.tesco.com/recipes/kung-pao-beef.html",
     type: "🍖",
     servings: 2,
     ingredients: [
