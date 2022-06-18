@@ -1,5 +1,6 @@
 import { Button, Icon }  from '@mui/material';
 import getGroupedIngredients from "../utils/getGroupedIngredients"
+import party from "party-js"
 
 const EndButtons = (props) => {
     const {setIsSubmitted, setChosenMeals, chosenMeals, chosenDays, buttonText, setButtonText} = props;
@@ -21,7 +22,10 @@ const EndButtons = (props) => {
     + "\n 🥶 Freezer \n"
     + getGroupedIngredients(chosenMeals, "freezer").map((ingredient, index)=>( ingredient.amount + ingredient.units + ' ' + ingredient.item + '\n')).join("")
 
-    const copyToClipboard = () => {
+    const copyToClipboard = (event) => {
+        party.confetti(event.target, {
+            count: party.variation.range(40, 60)
+        })
         navigator.clipboard.writeText(mealPlanText);
         setButtonText('Copied!');
         setTimeout(() => {
@@ -32,7 +36,7 @@ const EndButtons = (props) => {
 
     return (
         <section>
-            <Button variant="contained" onClick={copyToClipboard} startIcon={<Icon>content_copy</Icon>} sx={{m: 1}}>{buttonText}</Button>
+            <Button variant="contained" onClick={copyToClipboard} startIcon={<Icon>content_copy</Icon>} sx={{m: 1, minWidth: '13rem'}}>{buttonText}</Button>
             <Button variant="contained" onClick={goBack} startIcon={<Icon>undo</Icon>} sx={{m: 1}}>Go back</Button>
         </section>
     )

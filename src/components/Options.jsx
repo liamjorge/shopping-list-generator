@@ -4,7 +4,6 @@ import recipeList from "../data/recipeList"
 import shuffle from "../utils/shuffle"
 import { Button, Switch, Icon, Grid, Box } from '@mui/material';
 
-
 const Options = (props) => {
     const [mealsRequired, setMealsRequired] = useState({
         Monday: true,
@@ -41,7 +40,7 @@ const Options = (props) => {
 
     return (
         <section>
-            <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ mb: "1rem" }}>
+            <Grid container direction="row" justifyContent="center" alignItems="center" sx={{ mt:"0rem", mb: "1rem" }}>
             {Object.keys(mealsRequired).map(day => (
                 <Box key={day+"box"} sx={{ m: "1rem" }}>
                     <p key={day+"p"}>{day}</p>
@@ -49,7 +48,7 @@ const Options = (props) => {
                 </Box>
             ))}
             </Grid>
-            <Button variant="contained" onClick={generateRecipes} startIcon={<Icon>star</Icon>}>Let's go</Button>
+            <Button variant="contained" onClick={generateRecipes} endIcon={<Icon>star</Icon>}>Get recipes</Button>
         </section>
     )
 }

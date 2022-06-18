@@ -143,6 +143,12 @@ const recipeList = [
         units: "x bunch",
         category: "fruit/veg",
       },
+      {
+        item: "roasted red peppers (from a jar)",
+        amount: 2,
+        units: "x",
+        category: "cupboard",
+      },
     ],
   },
   {

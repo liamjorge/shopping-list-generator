@@ -42,21 +42,14 @@ const MealPlan = (props) => {
             >
             {chosenDays.map((day, index)=>(
                 <React.Fragment key={day + index}>
-                    <ListItemButton sx={{cursor: 'default'}}>
-                        <ListItemText primary={
-                            <Typography variant="h6">
-                                {day}
-                            </Typography>
-                        } />
-                        
-                    </ListItemButton>
+                    <ListItemText variant="subheading">{day}</ListItemText>
                     <List component="div" disablePadding>
                         <ListItemButton sx={{ pl: 4 }}>
                             <ListItemText component="a" href={chosenMeals[index].url} target="_blank" primary={`${chosenMeals[index].type} ${chosenMeals[index].recipeName}`} />
-                            <ButtonGroup size="small">
-                                <Button onClick={() => decreaseServings(index)}>-</Button>
-                                <Button disabled>{chosenMeals[index].servings}</Button>
-                                <Button onClick={() => increaseServings(index)}>+</Button>
+                            <ButtonGroup orientation="vertical" size="small">
+                                <Button style={{ maxHeight: "1.5rem",minHeight: "1.5rem", maxWidth: "1.6rem", minWidth: "1.6rem"}} onClick={() => increaseServings(index)}>+</Button>
+                                <Button style={{ maxHeight: "1.5rem",minHeight: "1.5rem", maxWidth: "1.6rem", minWidth: "1.6rem"}} disabled>{chosenMeals[index].servings}</Button>
+                                <Button style={{ maxHeight: "1.5rem",minHeight: "1.5rem", maxWidth: "1.6rem", minWidth: "1.6rem" }} onClick={() => decreaseServings(index)}>-</Button>
                             </ButtonGroup>
                         </ListItemButton>
                     </List>
